@@ -57,3 +57,6 @@ class transaction():
         con.commit()
         con.close()
         return [toDict(t) for t in tuples]
+    
+if __name__=="__main__":
+    transact=transaction()

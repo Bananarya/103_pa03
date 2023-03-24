@@ -5,7 +5,7 @@ def show_transaction():
 if __name__=="__main__":
         transact=transaction()
         print("""
-            Welcome to the transaction sql interactive platform, please type the number to choose what action do you want:  
+            Welcome to the transaction sql interactive platform, please type the number to make a request:  
             0. quit
             4. show transactions
             5. add transaction
@@ -24,5 +24,5 @@ if __name__=="__main__":
             print("Pleas tell me the information of the transaction you want to add")
             item=input()
         elif(action_num==6):
-            print("Pleas tell me the item # of the transaction you want to add")
+            print("Pleas tell me the item #(rowid) of the transaction you want to delete")
             rowid=input()

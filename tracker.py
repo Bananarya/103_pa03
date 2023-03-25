@@ -40,17 +40,18 @@ def process_args(arglist):
     elif arglist[0]=="show":
         print_todos(todos = todolist.selectAll())
     elif arglist[0]=='add':
-        print(arglist)
         if len(arglist)!=5:
             print_usage()
         else:
             todo = {'amount':arglist[1],'category':arglist[2],'date':arglist[3], 'description': arglist[4]}
             todolist.add(todo)
+            print("transaction added")
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
             print_usage()
         else:
             todolist.delete(arglist[1])
+            print("transaction deleted")
     elif arglist[0]=='std':
         if len(arglist)!=2:
             print_usage()

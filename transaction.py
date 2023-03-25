@@ -19,17 +19,26 @@ import os
 def toDict(t):
     ''' t is a tuple (item#,amount, category,date,description), according to the demo, item# is the rowid'''
     print('t='+str(t))
-    todo = {'rowid':t[0], 'amount':t[1], 'category':t[2], 'date':t[3],'description':t[4]}
+    todo = {'rowid':t[0], 'amount':t[1], 'category':t[2], 'date':t[3],'description':t[4],'year':t[5],'month':t[6]}
     return todo
 
 class transaction():
     def __init__(self):
         self.runQuery('''CREATE TABLE IF NOT EXISTS transaction_table
-                    (amount int, category text, date text, description text)''',())
+                    (amount int, category text, date text, description text, year text, month text)''',())
     
     def selectDate(self,date):  
         ''' return all of the uncompleted tasks as a list of dicts.'''
-        return self.runQuery("SELECT rowid,* from transaction_table where date="+date,())
+        return self.runQuery("SELECT rowid,* from transaction_table where date=(?)",(date,))
+
+    def selectCategory(self,category):
+        return self.runQuery("SELECT rowid,* from transaction_table where category=(?)",(category,))
+
+    def selectMonth(self,month):
+        return self.runQuery("SELECT rowid,* from transaction_table where month=(?)",(month,))
+
+    def selectYear(self,year):
+        return self.runQuery("SELECT rowid,* from transaction_table where year=(?)",(year,))
 
     def selectAll(self):
         ''' return all of the tasks as a list of dicts.'''
@@ -37,7 +46,10 @@ class transaction():
 
     def add(self,item):
         ''' create a todo item and add it to the todo table '''
-        return self.runQuery("INSERT INTO transaction_table VALUES(?,?,?,?)",(item['amount'],item['category'],item['date'],item['description']))
+        date = item['date'].split('/')
+        year = date[0]
+        month = date[1]
+        return self.runQuery("INSERT INTO transaction_table VALUES(?,?,?,?,?,?)",(item['amount'],item['category'],item['date'],item['description'],year,month))
 
     def delete(self,rowid):
         ''' delete a todo item '''
@@ -50,7 +62,7 @@ class transaction():
     """
     def runQuery(self,query,tuple):
         ''' return all of the uncompleted tasks as a list of dicts.'''
-        con= sqlite3.connect(os.getenv('HOME')+'/transaction.db')
+        con= sqlite3.connect(os.getenv('HOME')+'/transaction1.db')
         cur = con.cursor() 
         cur.execute(query,tuple)
         tuples = cur.fetchall()

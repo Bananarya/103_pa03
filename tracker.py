@@ -35,9 +35,9 @@ def print_usage():
     print("""
             Welcome to the transaction sql interactive platform, please type the number to make a request:  
             0. quit
-            4. show transactions
-            5. add transaction
-            6. delete transaction
+            4. show transactions (show)
+            5. add transaction (add)
+            6. delete transaction (delete)
             7. summarize transactions by date
             8. summarize transactions by month
             9. summarize transactions by year
@@ -52,28 +52,27 @@ def print_todos(todos):
         print('no tasks to print')
         return
     print('\n')
-    print("%-10s %-10s %-30s %-10s"%('item #','title','desc','completed'))
+    print("%-10s %-10s %-10s %-10s %-50s"%('item #','amount','category','date','description'))
     print('-'*40)
     for item in todos:
         values = tuple(item.values()) #(rowid,title,desc,completed)
-        print("%-10s %-10s %-30s %2d"%values)
+        print("%-10s %-10s %-10s %-10s %-50s"%values)
 
 def process_args(arglist):
     ''' examine args and make appropriate calls to TodoList'''
-    todolist = TodoList()
+    todolist = transaction()
     if arglist==[]:
         print_usage()
     elif arglist[0]=="show":
-        print_todos(todolist.selectActive())
-    elif arglist[0]=="showall":
         print_todos(todos = todolist.selectAll())
     elif arglist[0]=="showcomplete":
         print_todos(todolist.selectCompleted())
     elif arglist[0]=='add':
-        if len(arglist)!=3:
+        print(arglist)
+        if len(arglist)!=5:
             print_usage()
         else:
-            todo = {'title':arglist[1],'desc':arglist[2],'completed':0}
+            todo = {'amount':arglist[1],'category':arglist[2],'date':arglist[3], 'description': arglist[4]}
             todolist.add(todo)
     elif arglist[0]=='complete':
         if len(arglist)!= 2:
@@ -96,12 +95,12 @@ def toplevel():
         # they didn't pass any arguments, 
         # so prompt for them in a loop
         print_usage()
-        args = []
+        args = [] 
         while args!=['']:
             args = input("command> ").split(' ')
             if args[0]=='add':
                 # join everyting after the name as a string
-                args = ['add',args[1]," ".join(args[2:])]
+                args = ['add',args[1],args[2],args[3], " ".join(args[4:])]
             process_args(args)
             print('-'*40+'\n'*3)
     else:

@@ -19,34 +19,34 @@ import os
 def toDict(t):
     ''' t is a tuple (item#,amount, category,date,description), according to the demo, item# is the rowid'''
     print('t='+str(t))
-    todo = {'item#':t[0], 'amount':t[1], 'category':t[2], 'date':t[3],'description':t[4]}
+    todo = {'rowid':t[0], 'amount':t[1], 'category':t[2], 'date':t[3],'description':t[4]}
     return todo
 
 class transaction():
     def __init__(self):
-        self.runQuery('''CREATE TABLE IF NOT EXISTS transaction
+        self.runQuery('''CREATE TABLE IF NOT EXISTS transaction_table
                     (amount int, category text, date text, description text)''',())
     
-    def selectDate(self,date):
+    def selectDate(self,date):  
         ''' return all of the uncompleted tasks as a list of dicts.'''
-        return self.runQuery("SELECT item#,* from transaction where date="+date,())
+        return self.runQuery("SELECT rowid,* from transaction_table where date="+date,())
 
     def selectAll(self):
         ''' return all of the tasks as a list of dicts.'''
-        return self.runQuery("SELECT item#,* from transaction",())
+        return self.runQuery("SELECT rowid,* from transaction_table",())
 
     def add(self,item):
         ''' create a todo item and add it to the todo table '''
-        return self.runQuery("INSERT INTO transaction VALUES(?,?,?,?)",(item['amount'],item['category'],item['date'],item['description']))
+        return self.runQuery("INSERT INTO transaction_table VALUES(?,?,?,?)",(item['amount'],item['category'],item['date'],item['description']))
 
     def delete(self,rowid):
         ''' delete a todo item '''
-        return self.runQuery("DELETE FROM transaction WHERE item#=(?)",(rowid,))
+        return self.runQuery("DELETE FROM transaction_table WHERE rowid=(?)",(rowid,))
     #not a useful method, but can be modified if u need
     """
     def setComplete(self,rowid):
         ''' mark a todo item as completed '''
-        return self.runQuery("UPDATE transaction SET completed=1 WHERE item#=(?)",(rowid,))
+        return self.runQuery("UPDATE transaction_table SET completed=1 WHERE rowid=(?)",(rowid,))
     """
     def runQuery(self,query,tuple):
         ''' return all of the uncompleted tasks as a list of dicts.'''

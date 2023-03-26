@@ -11,6 +11,8 @@ to Python Dictionaries as follows:
 In place of SQL queries, we will have method calls.
 
 This app will store the data in a SQLite database ~/transaction.db
+Author: Rongzi Xie
+Editor: James Ma, Liulu Yue
 
 '''
 import sqlite3
@@ -21,7 +23,7 @@ def toDict(t):
     print('t='+str(t))
     todo = {'rowid':t[0], 'amount':t[1], 'category':t[2], 'date':t[3],'description':t[4],'year':t[5],'month':t[6]}
     return todo
-
+#Rongzi Xie
 class transaction():
     def __init__(self):
         self.runQuery('''CREATE TABLE IF NOT EXISTS transaction_table

@@ -2,6 +2,33 @@ from transaction import transaction
 import sys
 
 """Creat method to handle different activity"""
+# def show_transaction():
+
+#     if __name__=="__main__":
+#         transact=transaction()
+#         print("""
+#             Welcome to the transaction sql interactive platform, please type the number to make a request:  
+#             0. quit
+#             4. show transactions
+#             5. add transaction
+#             6. delete transaction
+#             7. summarize transactions by date
+#             8. summarize transactions by month
+#             9. summarize transactions by year
+#             10. summarize transactions by category
+#             11. print this menu
+#             """)
+#         action_num=int(input())
+#         if(action_num==0):
+#             print("Goodbye!")
+#             return
+#         elif(action_num==5):
+#             print("Pleas tell me the information of the transaction you want to add")
+#             item=input()
+#         elif(action_num==6):
+#             print("Pleas tell me the item #(rowid) of the transaction you want to delete")
+#             rowid=input()
+
 
 def print_usage():
     ''' print an explanation of how to use this command '''
@@ -49,33 +76,34 @@ def process_args(arglist):
                 print("transaction added")
             except:
                 print("date is not formatted well")
-            
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
-            print_usage()
+            print("Illegal argument")
         else:
             todolist.delete(arglist[1])
-            print("transaction deleted")
+            print("Transaction deleted")
     elif arglist[0]=='std':
         if len(arglist)!=2:
-            print_usage()
+            print("Illegal argument")
         else:
             print_todos(todos = todolist.selectDate(arglist[1]))
     elif arglist[0]=='stm':
         if len(arglist)!=2:
-            print_usage()
+            print("Illegal argument")
         else:
             print_todos(todos = todolist.selectMonth(arglist[1]))
     elif arglist[0]=='sty':
         if len(arglist)!=2:
-            print_usage()
+            print("Illegal argument")
         else:
             print_todos(todos = todolist.selectYear(arglist[1]))
     elif arglist[0]=='stc':
         if len(arglist)!=2:
-            print_usage()
+            print("Illegal argument")
         else:
             print_todos(todos = todolist.selectCategory(arglist[1]))
+    elif arglist[0]=='p':
+        print_usage()
     else:
         print(arglist,"is not implemented")
         print_usage()
@@ -90,11 +118,12 @@ def toplevel():
         args = [] 
         while args!=['']:
             args = input("command> ").split(' ')
-            if args[0]=='add':
-                # join everyting after the name as a string
-                args = ['add',args[1],args[2],args[3], " ".join(args[4:])]
-            process_args(args)
-            print('-'*40+'\n'*3)
+            if args[0]=='q':
+                break
+            else:
+                process_args(args)
+                print('-'*40+'\n'*3)
+                print_usage()
     else:
         # read the args and process them
         args = sys.argv[1:]

@@ -50,7 +50,7 @@ class transaction():
         year = date[0]
         month = date[1]
         return self.runQuery("INSERT INTO transaction_table VALUES(?,?,?,?,?,?)",(item['amount'],item['category'],item['date'],item['description'],year,month))
-
+        
     def delete(self,rowid):
         ''' delete a todo item '''
         return self.runQuery("DELETE FROM transaction_table WHERE rowid=(?)",(rowid,))

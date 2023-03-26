@@ -44,8 +44,12 @@ def process_args(arglist):
             print_usage()
         else:
             todo = {'amount':arglist[1],'category':arglist[2],'date':arglist[3], 'description': arglist[4]}
-            todolist.add(todo)
-            print("transaction added")
+            try:
+                todolist.add(todo)
+                print("transaction added")
+            except:
+                print("date is not formatted well")
+            
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
             print_usage()

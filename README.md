@@ -20,7 +20,7 @@ delete(rowid): delete the item by its rowid
 
 runQuery(query,tuple): create a sql table and return all the items as dictionaries.
 ## tracker.py: Liulu Yue && James Ma ##
-tracker.py is an app that maintians a financial transactions history. It is meant to be used as a shell command. 
+tracker.py is an app that maintians a financial transactions history. It is meant to be used as a shell command. <br />
 This app will store all transactions in a SQLite database ~/transaction1.db. 
 Once start, this app will ask for input command, process your command, and print the menu to prompt for another command until nothing is entered or the user want to quit the app voluntarily by entering q. 
 Supported commands are:

@@ -39,7 +39,7 @@ Supported commands are:
 - sty: summarize transactions by year <br />
 	Typing sty followed by the year (number) will give you all transactions in the specified year.
 - stc: summarize transactions by category <br />
-	Typing stc followed by category will give you all transactions with the specified category.
+	Typing stc followed by category will give you all transactions with the specified category. <br />
 (std, stm, sty, and stc each takes only one input except command itself. If the input length is not desired length, illegal argument will be printed. Please try again with correct format input.)
 - p: print the menu <br />
 	Typing p will show the menu of all supported commands. 

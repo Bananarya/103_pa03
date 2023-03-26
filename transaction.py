@@ -29,16 +29,20 @@ class transaction():
         self.runQuery('''CREATE TABLE IF NOT EXISTS transaction_table
                     (amount int, category text, date text, description text, year text, month text)''',())
     
+    # Wrote by Liulu Yue
     def selectDate(self,date):  
         ''' return all of the uncompleted tasks as a list of dicts.'''
         return self.runQuery("SELECT rowid,* from transaction_table where date=(?)",(date,))
 
+    # Wrote by Liulu Yue
     def selectCategory(self,category):
         return self.runQuery("SELECT rowid,* from transaction_table where category=(?)",(category,))
 
+    # Wrote by Liulu Yue
     def selectMonth(self,month):
         return self.runQuery("SELECT rowid,* from transaction_table where month=(?)",(month,))
 
+    # Wrote by Liulu Yue
     def selectYear(self,year):
         return self.runQuery("SELECT rowid,* from transaction_table where year=(?)",(year,))
 

@@ -19,7 +19,31 @@ add(item): add an item with all the information the sql table need
 delete(rowid): delete the item by its rowid
 
 runQuery(query,tuple): create a sql table and return all the items as dictionaries.
-## tracker.py ##
+## tracker.py: Liulu Yue && James Ma ##
+tracker.py is an app that maintians a financial transactions history. It is meant to be used as a shell command. 
+This app will store all transactions in a SQLite database ~/transaction1.db. 
+Once start, this app will ask for input command, process your command, and print the menu to prompt for another command until nothing is entered or the user want to quit the app voluntarily by entering q. 
+Supported commands are:
+- q: quit
+	Typing q will exit from the app.
+- show: show transactions
+
+- add: add transaction
+
+- delete: delete transaction
+
+- std: summarize transactions by date
+	Typing std followed by a specific date will give you all transactions on that date.
+- stm: summarize transactions by month
+	Typing stm followed by the month (number) will give you all transactions in the specified month.
+- sty: summarize transactions by year
+	Typing sty followed by the year (number) will give you all transactions in the specified year.
+- stc: summarize transactions by category
+	Typing stc followed by category will give you all transactions with the specified category.
+(std, stm, sty, and stc each takes only one input except command itself. If the input length is not desired length, illegal argument will be printed. Please try again with correct format input.)
+- p: print the menu
+	Typing p will show the menu of all supported commands. 
+
 
 ### Test: Keer Xu ###
 Keer Xu contributes to this project by creating the test_transaction.py file to test all methods in the transaction.py and make sure that all methods run correctly. 

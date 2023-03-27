@@ -27,11 +27,11 @@ Supported commands are:
 - q: quit <br />
 	Typing q will exit from the app.
 - show: show transactions <br />
-
+    show all the transactions in the database
 - add: add transaction <br />
-
+    add transaction in the format of (amount, catagory, date(YYYY/MM/DD), description)
 - delete: delete transaction <br />
-
+    delete a transaction specifying the item #
 - std: summarize transactions by date <br />
 	Typing std followed by a specific date will give you all transactions on that date.
 - stm: summarize transactions by month <br />

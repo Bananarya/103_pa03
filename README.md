@@ -48,6 +48,28 @@ Supported commands are:
 ### Test: Keer Xu ###
 Keer Xu contributes to this project by creating the test_transaction.py file to test all methods in the transaction.py and make sure that all methods run correctly. 
 
+## The following scripts are results by running pylint on tracker.py and transaction.py ##
+
+************* Module transaction
+transaction.py:59:86: C0303: Trailing whitespace (trailing-whitespace)
+transaction.py:27:0: C0103: Class name "transaction" doesn't conform to PascalCase naming style (invalid-name)
+transaction.py:64:29: W0622: Redefining built-in 'tuple' (redefined-builtin)
+
+------------------------------------------------------------------
+Your code has been rated at 9.17/10 (previous run: 8.89/10, +0.28)
+
+************* Module tracker
+tracker.py:9:0: C0301: Line too long (108/100) (line-too-long)
+tracker.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tracker.py:55:10: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+tracker.py:61:14: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
+tracker.py:80:12: W0702: No exception type(s) specified (bare-except)
+tracker.py:64:0: R0912: Too many branches (23/12) (too-many-branches)
+tracker.py:124:12: R1723: Unnecessary "else" after "break", remove the "else" and de-indent the code inside it (no-else-break)
+
+------------------------------------------------------------------
+Your code has been rated at 9.00/10 (previous run: 7.89/10, +1.11)
+
 ## The following scripts are results by running tracker.py in terminal ##
  Welcome to the transaction sql interactive platform, please type the command to make a request:
             q: quit
